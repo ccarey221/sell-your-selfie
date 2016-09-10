@@ -1,0 +1,30 @@
+{
+  "name": "sell-your-selfie",
+  "version": "0.0.1",
+  "description": "democratize advertising",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tynes/sell-your-selfie.git"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 6
+    },
+    "env": {
+      "browser": true
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tynes/sell-your-selfie/issues"
+  },
+  "homepage": "https://github.com/Tynes/sell-your-selfie#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
