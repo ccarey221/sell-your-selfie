@@ -1,5 +1,5 @@
 import React from 'react';
-import fetch from 'whatwg-fetch';
+import 'whatwg-fetch';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -9,6 +9,11 @@ class Dashboard extends React.Component {
       points: [],
     };
   }
+
+  componentDidMount() {
+    this.populateTweets();
+  }
+
   populateTweets() {
     fetch('/getpoints/sell_your_selfi', {
       method: 'GET',
@@ -19,14 +24,11 @@ class Dashboard extends React.Component {
       },
     })
     .then(body => {
+      console.log(body);
       this.setState({
         tweets: body,
       });
     });
-  }
-
-  ComponentDidMount() {
-    this.populateTweets();
   }
 
   render() {
