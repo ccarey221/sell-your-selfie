@@ -14,7 +14,7 @@ exports.createUser = (twitter_handle, cb) => {
 }
 
 exports.checkIfUserExists = (twitter_handle, cb) => {
-  db.query('SELECT EXISTS(SELECT 1 FROM users WHERE user_id=($1)', [twitter_handle], (err, result) => {
+  db.query('SELECT EXISTS (SELECT 1 FROM users WHERE user_id=(SELECT user_id FROM users WHERE twitter_handle=($1)))', [twitter_handle], (err, result) => {
     if (err) {
       logger.error('error checking if user exists');
       cb(err, null);

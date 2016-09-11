@@ -20,10 +20,14 @@ module.exports = () => {
       followers_count: event.user.followers_count
     }
 
+    const tweet = {
+      message: event.text
+    }
+
     if(event.entities && event.entities.media){
       event.entities.media.forEach(media => {
         if (media.type === 'photo') {
-          Haven(user, media.media_url);
+          Haven(user, media.media_url, tweet);
         }
       })
     }
