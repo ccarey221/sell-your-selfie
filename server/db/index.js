@@ -1,7 +1,9 @@
 const pg = require('pg');
 const logger = require('../utils/logger');
 
-const client = new pg.Client();
+const client = new pg.Client({
+  database: 'sellyourselfie',
+});
 
 client.connect(function (err) {
   if (err) {
