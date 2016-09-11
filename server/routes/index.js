@@ -1,3 +1,6 @@
+const logger = require('../utils/logger');
+const userController = require('../controllers/users');
+
 module.exports = app => {
   // routes here
 // app.get('/auth/twitter', passport.authenticate('twitter'));
@@ -5,4 +8,5 @@ module.exports = app => {
 // app.get('/auth/twitter/callback',
 //   passport.authenticate('twitter', { successRedirect: '/dashboard',
 //                                      failureRedirect: '/login' }));
+  
 };
