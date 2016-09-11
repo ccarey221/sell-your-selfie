@@ -5,7 +5,7 @@ import Dashboard from './Components/Dashboard';
 
 const AppRouter = () => (
   <Router history={hashHistory}>
-    <Route path="/" component={Landing} />
+    <Route path="/" component={Dashboard} />
     <Route path="/dashboard" component={Dashboard} />
   </Router>
 );
