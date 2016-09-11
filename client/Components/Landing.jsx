@@ -20,7 +20,7 @@ const Landing = () => (
             <div className="container">
               <ul className="nav navbar-nav">
                 <li>
-                  <a href="/auth/twitter">Sign in with
+                  <a href="auth/twitter">Sign in with
                     <img
                       src="images/twitter_logo.png"
                       alt="twitter"
