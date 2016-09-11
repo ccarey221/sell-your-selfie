@@ -14,4 +14,7 @@ require('./routes')(app);
 app.use('/', express.static(`${__dirname}/../client`));
 app.use(logger.errorLogger);
 
+// Load twitter service
+require('./controllers/twitter')();
+
 app.listen(PORT, () => console.log(`App listening on ${PORT}`));
