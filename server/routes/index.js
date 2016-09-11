@@ -1,6 +1,6 @@
 const logger = require('../utils/logger');
 const passport = require('passport');
-const pointController = require('../controllers/Point.js');
+const pointController = require('../controllers/Point');
 
 module.exports = app => {
   app.get('/auth/twitter', passport.authenticate('twitter'));
@@ -8,17 +8,13 @@ module.exports = app => {
   app.get('/auth/twitter/callback',
     passport.authenticate('twitter', {
       failureRedirect: '/',
+      successRedirect: '/#/dashboard',
     }),
     (req, res) => {
       logger.info('successful authentication');
-      // res.redirect('/dashboard');
       res.json(req.user);
     }
   );
-
-  app.get('/dashboard', (req, res) => {
-    res.redirect('/dashboard');
-  });
 
   app.get('/getpoints/:screen_name', (req, res) => {
     const screen_name = req.params.screen_name;
@@ -28,6 +24,6 @@ module.exports = app => {
       } else {
         res.send(results);
       }
-    })
+    });
   });
 };

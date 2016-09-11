@@ -43,6 +43,7 @@
     "react-tap-event-plugin": "^1.0.0",
     "twitter": "^1.4.0",
     "webpack": "^1.13.2",
+    "whatwg-fetch": "^1.0.0",
     "winston": "^2.2.0"
   },
   "devDependencies": {
