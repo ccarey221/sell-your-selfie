@@ -13,3 +13,16 @@ exports.createPoint = (data, cb) => {
     }
   });
 }
+
+exports.retrieveUserPoints = (twitter_handle, cb) => {
+  logger.info('checking twitter handle', twitter_handle);
+  db.query('SELECT * FROM points WHERE user_id=(SELECT user_id FROM users WHERE twitter_handle=$1)', [twitter_handle], (err, result) => {
+    if (err) {
+      logger.error('error checking if user exists', err);
+      cb(err, null);
+    } else {
+      logger.info('no lookup error!', result.rows);
+      cb(null, result.rows);
+    }
+  });
+};
