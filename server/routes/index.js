@@ -1,6 +1,6 @@
 const logger = require('../utils/logger');
 const passport = require('passport');
-const userController = require('../controllers/users');
+const userController = require('../controllers/User.js');
 
 module.exports = app => {
   app.get('/auth/twitter', passport.authenticate('twitter'));

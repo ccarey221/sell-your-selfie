@@ -14,18 +14,19 @@ CREATE TABLE users(
   total_points INTEGER 
 );
 
-CREATE TABLE tweets(
-  tweet_id SERIAL PRIMARY KEY,
-  user_id INTEGER,
-  brand TEXT,
-  message TEXT,
-  image_url TEXT,
-  FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
-);
-
 CREATE TABLE brands(
   brand_id SERIAL PRIMARY KEY,
   name TEXT
+);
+
+CREATE TABLE tweets(
+  tweet_id SERIAL PRIMARY KEY,
+  user_id INTEGER,
+  brand_id INTEGER,
+  message TEXT,
+  image_url TEXT,
+  FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+  FOREIGN KEY (brand_id) REFERENCES brands(brand_id) ON DELETE CASCADE
 );
 
 CREATE TABLE tags(
