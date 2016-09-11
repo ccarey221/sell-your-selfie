@@ -2,9 +2,9 @@ var passport = require('passport')
   , TwitterStrategy = require('passport-twitter').Strategy;
 
 passport.use(new TwitterStrategy({
-    consumerKey: '1FcM1FOspmD28EQO2qEDTD4He',
-    consumerSecret: 'eyA2FhpWWzWmSodJdov0KIAA7ovXWn0u8XehAUEQrqeG3icwpq',
-    callbackURL: "http://www.example.com/auth/twitter/callback"
+    consumerKey: 'YJLtF4aucHBS2iognF0YRQEos',
+    consumerSecret: ' zTej9rKSEczYw2zOTZTvWZtybeF6fGkcYijPhC3L70iefummOc',
+    callbackURL: "http://www.sellyourselfie.herokuapp.com/dashboard"
   },
   function(token, tokenSecret, profile, done) {
     User.findOrCreate(..., function(err, user) {
