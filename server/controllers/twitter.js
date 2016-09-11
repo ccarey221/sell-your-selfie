@@ -9,7 +9,7 @@ module.exports = () => {
     access_token_secret: process.env.ACCESS_TOKEN_SECRET
   });
 
-  const stream = client.stream('statuses/filter', {track: 'HP142134'});
+  const stream = client.stream('statuses/filter', {track: 'sellyourselfie'});
 
   stream.on('data', function(event) {
     const user = {
@@ -19,18 +19,16 @@ module.exports = () => {
       location: event.user.location,
       followers_count: event.user.followers_count
     }
-    console.log('Tweet Text:', event.text);
-    console.log('Tweet User Info:', event.entities.media);
+
     if(event.entities && event.entities.media){
       event.entities.media.forEach(media => {
         if (media.type === 'photo') {
-          console.log('Tweet Image URL:', media.media_url);
           Haven(user, media.media_url);
         }
       })
     }
   });
-   
+
   stream.on('error', function(error) {
     throw new Error(error);
   });
