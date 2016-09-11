@@ -1,15 +1,12 @@
-var passport = require('passport')
-  , TwitterStrategy = require('passport-twitter').Strategy;
+var passport = require('passport');
+var TwitterStrategy = require('passport-twitter').Strategy;
 
 passport.use(new TwitterStrategy({
-    consumerKey: 'YJLtF4aucHBS2iognF0YRQEos',
-    consumerSecret: ' zTej9rKSEczYw2zOTZTvWZtybeF6fGkcYijPhC3L70iefummOc',
-    callbackURL: "http://www.sellyourselfie.herokuapp.com/dashboard"
+    consumerKey: process.env.CONSUMER_KEY,
+    consumerSecret: process.env.CONSUMER_SECRET,
+    callbackURL: process.env.CALLBACK_URL
   },
   function(token, tokenSecret, profile, done) {
-    User.findOrCreate(..., function(err, user) {
-      if (err) { return done(err); }
-      done(null, user);
-    });
+    // look up user in postgres to confirm user's id
   }
 ));
