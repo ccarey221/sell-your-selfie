@@ -9,6 +9,7 @@ module.exports = () => {
   });
 
   const stream = client.stream('statuses/filter', {track: 'HP142134'});
+
   stream.on('data', function(event) {
     const user = {
       id: event.user.id_str,
