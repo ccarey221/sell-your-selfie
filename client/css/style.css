@@ -1,0 +1,44 @@
+/*
+ * Project - API World Hackathon Project - Sell Your Selfie
+ * Team Members - Conor Carey, Mark Tyneway, Pradnya Patel, Reid Greer, Stephen Roebuck
+ * Author - Pradnya Patel
+ */
+
+body {
+	font: 300 1em "Lato", sans-serif; /* font style */
+	color: #08298A;
+}
+
+hr {
+	border: none;
+	height: 3px; /* thickness of line */
+	background-color: #08298A; /* line color */
+}
+
+.text-muted {
+	color: #bcbbbb /* lighter color for text */
+}
+
+.text-thin {
+	font-weight: 100; /* thinner font */
+}
+
+
+.text-thick {
+	font-weight: 500; /* thinner font */
+}
+
+.mouse-onclick-area{
+	cursor: pointer; /* change mouse pointer */
+}
+
+.txtarea{
+	height: 30%;
+	width: 100%;
+}
+.photo-frame {
+    -ms-transform: rotate(5deg); /* IE 9 */
+    -webkit-transform: rotate(5deg); /* Chrome, Safari, Opera */
+    transform: rotate(5deg);
+		padding: 2%;
+}
