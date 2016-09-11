@@ -8,17 +8,13 @@ module.exports = app => {
   app.get('/auth/twitter/callback',
     passport.authenticate('twitter', {
       failureRedirect: '/',
-      successRedirect: '/',
+      successRedirect: '/#/dashboard',
     }),
     (req, res) => {
       logger.info('successful authentication');
       res.json(req.user);
     }
   );
-
-  // app.get('/dashboard', (req, res) => {
-  //   res.redirect('/dashboard');
-  // });
 
   app.get('/getpoints/:screen_name', (req, res) => {
     const screen_name = req.params.screen_name;
@@ -28,6 +24,6 @@ module.exports = app => {
       } else {
         res.send(results);
       }
-    })
+    });
   });
 };
