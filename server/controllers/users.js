@@ -10,9 +10,18 @@ exports.createUser = (twitter_handle, cb) => {
       logger.info('new user', twitter_handle);
       cb(null, result);
     }
-  })
+  });
 }
 
 exports.checkIfUserExists = (twitter_handle, cb) => {
-  //
+  db.query('SELECT EXISTS(SELECT 1 FROM users WHERE user_id=($1)', [twitter_handle], (err, result) => {
+    if (err) {
+      logger.error('error checking if user exists');
+      cb(err, null);
+    } else {
+      logger.info('user exists!', twitter_handle);
+      // result will be t or f
+      cb(null, result);
+    }
+  });
 };
