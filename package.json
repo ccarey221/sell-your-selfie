@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
-    "build-db": "psql -f server/db/DB.sql && psql -d sellyourselfie -f server/db/Schema.sql"
+    "build-db": "psql -f server/db/DB.sql && psql -d sellyourselfie -f server/db/Schema.sql",
+    "populate-db": "node ./server/utils/populateBrands.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,7 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-0": "^6.5.0",
     "cheerio": "^0.22.0",
+    "csvtojson": "^1.0.0",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "express-winston": "^2.0.0",
