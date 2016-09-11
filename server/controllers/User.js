@@ -11,17 +11,17 @@ exports.createUser = (twitter_handle, cb) => {
       cb(null, result);
     }
   });
-}
+};
 
 exports.checkIfUserExists = (twitter_handle, cb) => {
-  db.query('SELECT EXISTS (SELECT 1 FROM users WHERE user_id=(SELECT user_id FROM users WHERE twitter_handle=($1)))', [twitter_handle], (err, result) => {
+  logger.info('checking twitter handle', twitter_handle);
+  db.query('SELECT user_id FROM users WHERE EXISTS (SELECT * FROM users WHERE user_id=(SELECT user_id FROM users WHERE twitter_handle=($1))) AND twitter_handle=($1)', [twitter_handle], (err, result) => {
     if (err) {
-      logger.error('error checking if user exists');
+      logger.error('error checking if user exists', err);
       cb(err, null);
     } else {
-      logger.info('user exists!', twitter_handle);
-      // result will be t or f
-      cb(null, result);
+      logger.info('no lookup error!', result);
+      cb(null, result.rows);
     }
   });
 };

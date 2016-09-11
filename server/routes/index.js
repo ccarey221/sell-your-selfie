@@ -11,7 +11,8 @@ module.exports = app => {
     }),
     (req, res) => {
       logger.info('successful authentication');
-      res.redirect('/dashboard');
+      // res.redirect('/dashboard');
+      res.json(req.user);
     }
   );
 
