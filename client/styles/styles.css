@@ -42,3 +42,13 @@ hr {
     transform: rotate(5deg);
 		padding: 2%;
 }
+
+.dashboardHeader {
+	position: relative;
+	left: 46%;
+}
+
+.dashboardTweets {
+	position: relative;
+	left: 39%;
+}

@@ -10,7 +10,7 @@ class Dashboard extends React.Component {
     };
   }
   populateTweets() {
-    fetch('/getpoints/:username', {
+    fetch('/getpoints/sell_your_selfi', {
       method: 'GET',
       credentials: 'same-origin',
       headers: {
@@ -28,23 +28,20 @@ class Dashboard extends React.Component {
   ComponentDidMount() {
     this.populateTweets();
   }
-  
+
   render() {
     return (
       <div>
-        <div className='dashboardHeader'>
-          <button onClick='' ></button>
+        <div className="dashboardHeader">
           <h2>Dashboard</h2>
         </div>
-        <div className='dashboardTweets'>
+        <div className="dashboardTweets">
           <ul>
               Your Advertisements | Your Points
             {this.state.tweets.map(tweet =>
               <li>`${tweet.name} | ${tweet.points}`</li>
             )}
           </ul>
-        </div>
-        <div className='dashboardPoints'>
         </div>
       </div>
     );
