@@ -23,8 +23,8 @@ module.exports = (user, img, tweet) => {
             // Now we need to check if the user exists
             const brand_id = result.rows[0].brand_id;
             User.checkIfUserExists(user.screen_name, (err, result) => {
-              if (result) {
-                let user_id = result.rows[0].user_id;
+              if (result[0]) {
+                let user_id = result[0].user_id;
                 // User exists
                 Tweet.addTweet({ 
                   user_id, 
@@ -41,24 +41,26 @@ module.exports = (user, img, tweet) => {
                     console.log(result);
                   })
                 });
-              } else if (!result && !err) {
+              } else if (!result[0] && !err) {
                 // Create User
                 User.createUser(user.screen_name, (err, result) => {
-                  let user_id = result.rows[0].user_id;
-                  Tweet.addTweet({ 
-                    user_id,
-                    brand_id, 
-                    message: tweet.message, 
-                    image_url: img
-                  }, (err, result) => {
-                    // Tweet created
-                    Point.createPoint({
+                  User.checkIfUserExists(user.screen_name, (err, result) => {
+                    let user_id = result[0].user_id;
+                    Tweet.addTweet({ 
                       user_id,
-                      brand_id,
-                      points: 10
+                      brand_id, 
+                      message: tweet.message, 
+                      image_url: img
                     }, (err, result) => {
-                      console.log(result.rows[0]);
-                    })
+                      // Tweet created
+                      Point.createPoint({
+                        user_id,
+                        brand_id,
+                        points: 10
+                      }, (err, result) => {
+                        console.log(result.rows[0]);
+                      })
+                    });
                   });
                 });
               }

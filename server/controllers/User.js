@@ -20,7 +20,7 @@ exports.checkIfUserExists = (twitter_handle, cb) => {
       logger.error('error checking if user exists', err);
       cb(err, null);
     } else {
-      logger.info('no lookup error!', result);
+      logger.info('no lookup error!', result.rows);
       cb(null, result.rows);
     }
   });
