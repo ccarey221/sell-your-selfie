@@ -24,30 +24,16 @@ class Dashboard extends React.Component {
       });
     });
   }
-  populatePoints() {
-    fetch('/getPoints/:username', {
-      method: 'GET',
-      credentials: 'same-origin',
-      headers: {
-        Accept: 'application/json',
-        ContentType: 'application/json',
-      },
-    })
-    .then(body => {
-      this.setState({
-        points: body,
-      });
-    });
-  }
+
   ComponentDidMount() {
     this.populateTweets();
-    // this.populatePoints();
   }
+  
   render() {
     return (
       <div>
         <div className='dashboardHeader'>
-          <button onClick='' />
+          <button onClick='' ></button>
           <h2>Dashboard</h2>
         </div>
         <div className='dashboardTweets'>
