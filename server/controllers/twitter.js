@@ -1,11 +1,12 @@
 module.exports = () => {
   const Twitter = require('twitter');
+  const Haven = require('./haven');
    
   const client = new Twitter({
-    consumer_key: process.env.TWITTER_CONSUMER_KEY,
-    consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-    access_token_key: process.env.TWITTER_ACCESS_TOKEN,
-    access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+    consumer_key: process.env.CONSUMER_KEY,
+    consumer_secret: process.env.CONSUMER_SECRET,
+    access_token_key: process.env.ACCESS_TOKEN,
+    access_token_secret: process.env.ACCESS_TOKEN_SECRET
   });
 
   const stream = client.stream('statuses/filter', {track: 'HP142134'});
@@ -20,11 +21,14 @@ module.exports = () => {
     }
     console.log('Tweet Text:', event.text);
     console.log('Tweet User Info:', event.entities.media);
-    event.entities.media.forEach(media => {
-      if (media.type === 'photo') {
-        console.log('Tweet Image URL:', media.media_url);
-      }
-    })
+    if(event.entities && event.entities.media){
+      event.entities.media.forEach(media => {
+        if (media.type === 'photo') {
+          console.log('Tweet Image URL:', media.media_url);
+          Haven(user, media.media_url);
+        }
+      })
+    }
   });
    
   stream.on('error', function(error) {
