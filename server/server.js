@@ -11,6 +11,8 @@ dotenv.config();
 app.use(logger.requestLogger);
 require('./middleware')(app);
 require('./routes')(app);
+require('./authentication')();
+
 app.use('/', express.static(`${__dirname}/../client`));
 app.use(logger.errorLogger);
 
